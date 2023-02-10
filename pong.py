@@ -1,4 +1,5 @@
 import turtle
+import os
 
 bcount = 0
 acount = 0
@@ -69,23 +70,29 @@ while True:
 
     if ball.ycor() > 290 or ball.ycor() < -290:
         ball.dy *= -1
+        os.system("afplay bounce.mp3&")
     if ball.xcor() > 390:
         bcount += 1
         ball.goto(0, 0)
         ball.dx *= -1
         pen.clear()
         pen.write("Blue: {} Red: {}".format(bcount, acount), align="center", font=["Helvetica", 25])
+        os.system("afplay score.mp3&")
     if ball.xcor() < -390:
         acount += 1
         ball.goto(0, 0)
         ball.dx *= -1
         pen.clear()
         pen.write("Blue: {} Red: {}".format(bcount, acount), align="center", font=["Helvetica", 25])
+        os.system("afplay score.mp3&")
 
     if (ball.xcor() < -340) and ball.xcor() > -350 and (
             ball.ycor() > paddle_a.ycor() - 50 and (ball.ycor() < paddle_a.ycor() + 50)):
         ball.dx *= -1
+        os.system("afplay bounce.mp3&")
+
 
     if (ball.xcor() > 340) and ball.xcor() < 350 and (
             ball.ycor() > paddle_b.ycor() - 50 and (ball.ycor() < paddle_b.ycor() + 50)):
         ball.dx *= -1
+        os.system("afplay bounce.mp3&")
