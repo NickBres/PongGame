@@ -50,15 +50,16 @@ pen.write("Blue: 0 Red: 0", align="center", font=["Helvetica", 25])
 
 def paddle_move(paddle, side):
     y = paddle.ycor()
-    y += side
-    paddle.sety(y)
+    if y + side < 250 and (y + side > -250):
+        y += side
+        paddle.sety(y)
 
 
 window.listen()
-window.onkeypress(lambda: paddle_move(paddle_a, 25), "w")
-window.onkeypress(lambda: paddle_move(paddle_a, -25), "s")
-window.onkeypress(lambda: paddle_move(paddle_b, 25), "Up")
-window.onkeypress(lambda: paddle_move(paddle_b, -25), "Down")
+window.onkeypress(lambda: paddle_move(paddle_a, 30), "w")
+window.onkeypress(lambda: paddle_move(paddle_a, -30), "s")
+window.onkeypress(lambda: paddle_move(paddle_b, 30), "Up")
+window.onkeypress(lambda: paddle_move(paddle_b, -30), "Down")
 
 # Main game loop
 while True:
@@ -90,7 +91,6 @@ while True:
             ball.ycor() > paddle_a.ycor() - 50 and (ball.ycor() < paddle_a.ycor() + 50)):
         ball.dx *= -1
         os.system("afplay bounce.mp3&")
-
 
     if (ball.xcor() > 340) and ball.xcor() < 350 and (
             ball.ycor() > paddle_b.ycor() - 50 and (ball.ycor() < paddle_b.ycor() + 50)):
