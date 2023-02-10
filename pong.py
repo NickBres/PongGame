@@ -1,8 +1,8 @@
 import turtle
 import os
 
-bcount = 0
-acount = 0
+b_count = 0
+a_count = 0
 
 window = turtle.Screen()
 window.title("Pong")
@@ -73,18 +73,18 @@ while True:
         ball.dy *= -1
         os.system("afplay bounce.mp3&")
     if ball.xcor() > 390:
-        bcount += 1
+        b_count += 1
         ball.goto(0, 0)
         ball.dx *= -1
         pen.clear()
-        pen.write("Blue: {} Red: {}".format(bcount, acount), align="center", font=["Helvetica", 25])
+        pen.write("Blue: {} Red: {}".format(b_count, a_count), align="center", font=["Helvetica", 25])
         os.system("afplay score.mp3&")
     if ball.xcor() < -390:
-        acount += 1
+        a_count += 1
         ball.goto(0, 0)
         ball.dx *= -1
         pen.clear()
-        pen.write("Blue: {} Red: {}".format(bcount, acount), align="center", font=["Helvetica", 25])
+        pen.write("Blue: {} Red: {}".format(b_count, a_count), align="center", font=["Helvetica", 25])
         os.system("afplay score.mp3&")
 
     if (ball.xcor() < -340) and ball.xcor() > -350 and (
