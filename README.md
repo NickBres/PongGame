@@ -5,6 +5,7 @@ Made with Turtle Grapics.
 
    ```sh
    git clone https://github.com/NickBres/PongGame.git
+   cd PongGame/
    python3 pong.py
    ```
 
