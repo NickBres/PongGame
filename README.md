@@ -3,6 +3,11 @@ My first game made on Python.
 
 Made with Turtle Grapics.
 
+   ```sh
+   git clone https://github.com/NickBres/PongGame.git
+   python3 pong.py
+   ```
+
 'w' + 's' - to move blue
 
 '↑' + '↓' - to move red
