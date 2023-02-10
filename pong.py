@@ -1,5 +1,8 @@
 import turtle
 
+bcount = 0
+acount = 0
+
 window = turtle.Screen()
 window.title("Pong")
 window.bgcolor("Black")
@@ -34,6 +37,15 @@ ball.goto(0, 0)
 ball.dx = 2
 ball.dy = 2
 
+# Pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 256)
+pen.color("white")
+pen.write("Blue: 0 Red: 0", align="center", font=["Helvetica", 25])
+
 
 def paddle_move(paddle, side):
     y = paddle.ycor()
@@ -57,13 +69,23 @@ while True:
 
     if ball.ycor() > 290 or ball.ycor() < -290:
         ball.dy *= -1
-    if ball.xcor() > 390 or ball.xcor() < -390:
-        ball.goto(0,0)
+    if ball.xcor() > 390:
+        bcount += 1
+        ball.goto(0, 0)
+        ball.dx *= -1
+        pen.clear()
+        pen.write("Blue: {} Red: {}".format(bcount, acount), align="center", font=["Helvetica", 25])
+    if ball.xcor() < -390:
+        acount += 1
+        ball.goto(0, 0)
+        ball.dx *= -1
+        pen.clear()
+        pen.write("Blue: {} Red: {}".format(bcount, acount), align="center", font=["Helvetica", 25])
+
+    if (ball.xcor() < -340) and ball.xcor() > -350 and (
+            ball.ycor() > paddle_a.ycor() - 50 and (ball.ycor() < paddle_a.ycor() + 50)):
         ball.dx *= -1
 
-    if (ball.xcor() < -340) and ball.xcor() > -350 and (ball.ycor() > paddle_a.ycor() - 50 and (ball.ycor() < paddle_a.ycor() + 50)):
+    if (ball.xcor() > 340) and ball.xcor() < 350 and (
+            ball.ycor() > paddle_b.ycor() - 50 and (ball.ycor() < paddle_b.ycor() + 50)):
         ball.dx *= -1
-
-    if (ball.xcor() > 340) and ball.xcor() < 350 and (ball.ycor() > paddle_b.ycor() - 50 and (ball.ycor() < paddle_b.ycor() + 50)):
-        ball.dx *= -1
-
